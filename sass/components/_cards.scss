@@ -1,0 +1,149 @@
+.cards {
+
+//functionality
+
+	perspective: 150rem;
+	-moz-perspective: 150rem;//----------perspective has to be on the parent element
+	position: relative;
+	height: 52rem;//this is added bec the height collapse after positioning absolute its child
+
+	&__side {
+	height: 52rem;
+	transition: all .8s ease;
+	position: absolute;//----this removes the perspective bec it removes the .cards hight
+	top: 0;
+	left: 0;
+	width: 100%;//we need this because absolute posistion elements start filling the widht of their elements
+	backface-visibility: hidden;
+	border-radius: 3px;
+	box-shadow: 0 1.5rem 4rem rgba($color-black, .15);
+	overflow: hidden; //--------------------fix overlaping sides 
+
+		&--front {
+			background-color: $color-white;
+		}
+
+		&--back {
+			transform: rotateY(180deg);//-----set to 180 to start inverted
+			&-1 {
+				background-image:  
+				linear-gradient(to right bottom, $color-secondary-light, $color-secondary-dark);
+			}
+			&-2 {
+				background-image:  
+				linear-gradient(to right bottom, $color-primary-light, $color-primary-dark);
+			}
+			&-3 {
+				background-image:  
+				linear-gradient(to right bottom, $color-tertiary-light, $color-tertiary-dark);
+			}
+		}
+	}
+	&:hover &__side--front {
+		transform: rotateY(180deg);
+	}
+	&:hover &__side--back {
+		transform: rotateY(0);// -----set to zero beacuse back is already 180deg
+	}
+
+//front side styling
+&__picture {
+	background-size: cover;
+	height: 23rem;
+	background-blend-mode: screen;//=======================changes blend mode but not supported in edge
+	-webkit-clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+	clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+	&--1 {
+		background-color:green;
+		background-image: linear-gradient(to right bottom, $color-secondary-light, $color-secondary-dark), 
+				url(../img/nat-5.jpg);
+		
+	}
+	&--2 {
+		background-color:green;
+		background-image: linear-gradient(to right bottom, $color-primary-light, $color-primary-dark), 
+				url(../img/nat-6.jpg);
+	}
+	&--3 {
+		background-color:green;
+		background-image: linear-gradient(to right bottom, $color-tertiary-light, $color-tertiary-dark), 
+				url(../img/nat-7.jpg);
+	}
+
+	}
+
+	&__heading {
+		font-size: 2.8rem;
+		font-weight: 300;
+		text-transform: uppercase;
+		text-align: right;
+		color: $color-white;
+		position: absolute;
+		top: 12rem;
+		right: 2rem;
+		width: 60%;
+		z-index: 1;
+	}
+	&__heading--span {
+		padding: 1rem 1.5rem;
+		-webkit-box-decoration-break: clone;//The box-decoration-break CSS property specifies how the background, padding, border, border-image, box-shadow, margin, and clip-path of an element are applied when the box for the element is fragmented.
+		box-decoration-break: clone;
+		&--1 {
+			background-image: linear-gradient(to right bottom, rgba($color-secondary-light,.85),
+				rgba($color-secondary-dark, .85))
+		}
+		&--2 {
+			background-image: linear-gradient(to right bottom, rgba($color-primary-light,.85),
+				rgba($color-primary-dark, .85))
+		}
+		&--3 {
+			background-image: linear-gradient(to right bottom, rgba($color-tertiary-light,.85),
+				rgba($color-tertiary-dark, .85))
+		}
+	}
+	&__details {
+		padding: 3rem;
+
+		ul {
+			list-style: none;
+			width: 80%;//takes care of the underline
+				margin: 0 auto;//---------------------------center a block element inside a block element
+			li {
+			text-align: center;
+				font-size: 1.5rem;
+				padding: 1rem;
+				&:not(:last-child) {
+					border-bottom: 1px solid $color-grey-light-2;
+				}
+			}
+		}
+	}
+
+
+	//back side styling
+	&__cta {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		width: 90%;
+		text-align: center;
+	}
+
+	&__price--box {
+		text-align: center;
+		color: $color-white;
+		margin-bottom: 8rem;
+
+	}
+	
+	&__price--only {
+		font-size: 1.4rem;
+		transform: uppercase;
+	}
+
+	&__price--value {
+	font-size: 6rem;
+	font-weight: 100;
+	}
+}
