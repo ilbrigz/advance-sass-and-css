@@ -4,6 +4,13 @@
 	
 	&:not(:last-child) { //instead of adding a 0 bottom margin to the last child, we add margin to the not the last child
 		margin-bottom: $gutter-vertical;
+
+		@include respond(tab-port) {
+			margin-bottom: $gutter-vertical-small;
+		}
+	@include respond(tab-port) {
+			max-width: 50rem;
+		}
 	}
 
 	@include clearfix;//------------------------------added the clearfix mixin to the parent
@@ -13,6 +20,15 @@
 		float: left;
 		&:not(:last-child) {
 			margin-right: $gutter-horizontal;
+		@include respond(tab-port) {
+			margin-right: 0;
+			margin-bottom: $gutter-vertical-small;
+		}
+
+		}
+
+		@include respond(tab-port) {
+			width: 100% !important;
 		}
 	}
 	.col-1-of-2 {
