@@ -23,8 +23,8 @@
 	&__content {
 	position: fixed;
 	@include absCenter;
-	height: 50rem;
 	width: 75%;
+	// height: 70vh;
 	background-color: $color-white;
 	box-shadow: 0 2rem 4rem rgba($color-black, .2);
 	border-radius: 3px;
@@ -35,23 +35,74 @@
 
 	transition: all .4s .2s;
 	z-index: 3000;
+
+	@include respond(tab-port){
+			display: block;
+		}
+	@include respond(phone){
+		height: 70rem;
+			max-height: 90vh;
+		}
 	}
 
 	&__left {
 		display: table-cell;
-		height: inherit;
+		height: 100%;
 		width: 33.3333333%;
 		position: relative;
-		background-color: green;
 
+		@include respond(tab-port){
+		display: table;
+		width: 100%;
+		height: 40%;
+		padding: 0;
+		margin: 0;
+		@include clearfix;
+		}
+		@include respond(phone){
+		display: block;
+		width: 100%;
+		height: 35%;
+		}
+	
+		&--image {
+			height: 35rem;
+			width: 100%;
+		@include respond(tab-port) {
+		display:table-cell;
+		height: 30rem;
+		width: 50%;
+		}
+		@include respond(phone) {
+		display:block;
+		height: 50%;
+		width: 100%;
+		}
+
+		}
 	}
 	&__right {
 		display: table-cell;
 		vertical-align: middle;
 		padding: 3rem 5rem;
+
+		@include respond(tab-port){
+			padding: 0 3rem;
+			display: block;
+			height: auto;
+			padding: 2rem;
+			text-align: center;
+		}
+
+		@include respond(phone){
+			padding: 1rem 1rem 0 1rem;		
+		}
+
 	}
 	&__img {
 		display: block;
+		object-fit: cover;
+		height: 100%;
 		width: 100%;
 	}
 
@@ -65,6 +116,11 @@
 		column-rule: 1px solid $color-grey-light-2;
 		
 		hyphens: auto;
+			@include respond(phone){
+			column-count: 1;
+			margin-bottom: 2rem;
+			line-height: 1.7rem;
+		}
 	}
 
 

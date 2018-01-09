@@ -18,7 +18,6 @@ gulp.task('sass', function () {
             cascade: false
     }))
     .pipe(sourcemaps.write({includeContent: false}))
-    .pipe(sourcemaps.init({loadMaps: true}))
     .pipe(gulp.dest('css'))
     .pipe(cssbeautify())
     .pipe(gulp.dest('css/beautified'));
